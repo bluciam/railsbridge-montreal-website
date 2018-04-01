@@ -1,6 +1,6 @@
 class ChecksController < ApplicationController
   http_basic_authenticate_with name: "volunteer", password: ENV["ADMIN_PASSWORD"], only: :index
-  skip_before_filter :verify_authenticity_token, except: :index
+  skip_before_action :verify_authenticity_token, except: :index
   before_action :find_check, only: :create
   layout :choose_layout
 
@@ -9,7 +9,7 @@ class ChecksController < ApplicationController
   end
 
   def script
-    render text: Rails.root.join('lib/rsvp.rb').read
+    render plain: Rails.root.join('lib/rsvp.rb').read
   end
 
   def create

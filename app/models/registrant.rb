@@ -1,7 +1,7 @@
 class Registrant < ActiveRecord::Base
 
-  belongs_to :course
-  belongs_to :edition
+  belongs_to :course, required: false
+  belongs_to :edition, required: false
 
   delegate :name, :room, :teachers, to: :course, prefix: true
 

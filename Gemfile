@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.5.1'
 
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 5.1'
 gem 'memcachier'
 gem 'dalli'
 gem 'kgio'
 gem 'rack-cache'
 
-gem 'bourbon', '~> 3.2.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'bourbon'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'responders', '~> 2.0'
 gem 'route_translator'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
@@ -29,12 +29,16 @@ group :production do
 end
 
 group :development do
-  gem 'better_errors'
   gem 'brakeman', :require => false
   gem 'letter_opener'
-  gem 'pry'
-  gem 'rspec-rails', '~> 3.3.2'
+  gem 'rspec-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'sqlite3'
+end
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'pry'
+  gem 'listen'
 end

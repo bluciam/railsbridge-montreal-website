@@ -10,10 +10,10 @@ RSpec.describe ChecksController do
         request.env["HTTP_AUTHORIZATION"] = encoded_credentials
       end
 
-      it "should assign :checks" do
+      it "should be success" do
         get :index
 
-        expect(assigns(:checks)).to_not be_nil
+        expect(response).to be_ok
       end
     end
   end
@@ -35,21 +35,16 @@ RSpec.describe ChecksController do
           ruby_platform: "x86_64-darwin13.0"
       } }
 
+      subject { post :create, params: { check: valid_params } }
+
       it "should create a new Check" do
         expect {
-          xhr :post, :create, { check: valid_params }, valid_session
+          subject
         }.to change(Check, :count).by(1)
       end
 
-      it "should assign :check with a new record" do
-        xhr :post, :create, { check: valid_params }, valid_session
-
-        expect(assigns(:check)).to be_a(Check)
-        expect(assigns(:check)).to be_persisted
-      end
-
       it "should respond with an OK" do
-        xhr :post, :create, { check: valid_params }, valid_session
+        subject
 
         expect(response).to be_ok
       end
@@ -61,7 +56,7 @@ RSpec.describe ChecksController do
 
         it "should overwrite the existing record rather than create a new one" do
           expect {
-            xhr :post, :create, { check: valid_params }, valid_session
+            subject
           }.to_not change { Check.count }
         end
       end
@@ -74,7 +69,7 @@ RSpec.describe ChecksController do
       end
 
       it "should respond with a bad request" do
-        xhr :post, :create, { check: { email: "invalid value" } }, valid_session
+        post :create, params: { check: { email: "invalid value" } }
 
         expect(response).to be_bad_request
       end

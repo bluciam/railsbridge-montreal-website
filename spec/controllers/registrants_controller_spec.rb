@@ -2,21 +2,23 @@ require 'rails_helper'
 
 RSpec.describe RegistrantsController do
   let(:registrant_basic_params) { {
-    name: "Gary Haran", email: "gary.haran@gmail.com"
+    name: "Gary Haran", email: "gary.haran@gmail.com", course_id: course.id, edition_id: edition.id
   } }
+
+  let!(:course) { Course.create }
+  let!(:edition) { Edition.create }
 
   context "POST create" do
     it "should create a registrant" do
       expect {
-        xhr :post, :create, registrant: registrant_basic_params
+        post :create, params: { registrant: registrant_basic_params }, format: :js
       }.to change(Registrant, :count).by 1
     end
 
-    it "should assign the registrant" do
-      xhr :post, :create, registrant: registrant_basic_params
+    it "should be success" do
+      post :create, params: { registrant: registrant_basic_params }, format: :js
 
       expect(response).to be_success
-      expect(assigns(:registrant)).to be_present
     end
   end
 
@@ -32,7 +34,7 @@ RSpec.describe RegistrantsController do
     } }
 
     it "should update an existing registrant" do
-      xhr :patch, :update, registrant: registrant_detail_params
+      patch :update, params: { registrant: registrant_detail_params }, format: :js
 
       existing_registrant.reload
       expect(existing_registrant.bringing_laptop).to be_truthy
