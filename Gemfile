@@ -20,6 +20,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'exception_notification'
 gem 'gibbon' # for mailchimp
+gem "faker"
 
 group :production do
   gem 'unicorn'
@@ -28,7 +29,9 @@ group :production do
   gem 'pg'
 end
 
-group :development do
+group :development, :test do
+  gem "byebug"
+  gem "rspec"
   gem 'better_errors'
   gem 'brakeman', :require => false
   gem 'letter_opener'
@@ -37,4 +40,6 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'sqlite3'
+  gem 'factory_bot_rails'
+  gem "shoulda-matchers"
 end

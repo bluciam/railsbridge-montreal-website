@@ -47,6 +47,7 @@ GEM
       thor
     brakeman (3.3.3)
     builder (3.2.2)
+    byebug (10.0.2)
     coderay (1.1.1)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -62,6 +63,13 @@ GEM
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
     execjs (2.7.0)
+    factory_bot (4.8.2)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
+      railties (>= 3.0.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     gibbon (2.2.4)
@@ -151,6 +159,10 @@ GEM
     route_translator (4.4.1)
       actionpack (>= 3.2, < 5.0)
       activesupport (>= 3.2, < 5.0)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -174,6 +186,8 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -215,9 +229,12 @@ DEPENDENCIES
   better_errors
   bourbon (~> 3.2.0)
   brakeman
+  byebug
   coffee-rails (~> 4.0.0)
   dalli
   exception_notification
+  factory_bot_rails
+  faker
   gibbon
   heroku-deflater
   jquery-rails
@@ -232,8 +249,10 @@ DEPENDENCIES
   rails_12factor
   responders (~> 2.0)
   route_translator
+  rspec
   rspec-rails (~> 3.3.2)
   sass-rails (~> 4.0.0)
+  shoulda-matchers
   simple_form
   spring
   spring-commands-rspec
@@ -247,4 +266,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.16.1

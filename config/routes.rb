@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'members/index'
+
+  get 'members/new'
+
+  get 'members/create'
+
   resource :admin, only: :show
 
 
